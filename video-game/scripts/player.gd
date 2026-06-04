@@ -1,20 +1,28 @@
 extends CharacterBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+
+const SPEED = 150.0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var tween = get_tree().create_tween()
-	Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-	if Input.is_action_just_pressed("ui_up"):
-		tween.tween_property(self, "rotation", 0.0, 0.1)
-	elif Input.is_action_just_pressed("ui_down"):
-		tween.tween_property(self, "rotation", PI, 0.1)
-	elif Input.is_action_just_pressed("ui_right"):
-		tween.tween_property(self, "rotation", PI/2, 0.1)
-	elif Input.is_action_just_pressed("ui_left"):
-		tween.tween_property(self, "rotation", (PI/2)*3, 0.1)
+func _physics_process(delta: float) -> void:
+	var direction_x := Input.get_axis("ui_left", "ui_right")
+	if direction_x:
+		velocity.x = direction_x * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	var direction_y := Input.get_axis("ui_up", "ui_down")
+	if direction_y:
+		velocity.y = direction_y * SPEED
+	else:
+		velocity.y = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+
+
+func _process(delta):
+	pass
 	
+
+
+func _on_player_entered(body: Node2D) -> void:
+	pass # Replace with function body.

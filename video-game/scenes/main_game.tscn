@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://du0eu2qjupty6"]
 
-[ext_resource type="Script" uid="uid://d313l0lb8pbn1" path="res://scripts/player.gd" id="1_s3esy"]
+[ext_resource type="Script" uid="uid://bpw0u0s0vnbvw" path="res://scripts/player.gd" id="1_s3esy"]
+[ext_resource type="Script" uid="uid://dt4wmjeqnp7b1" path="res://scripts/stock_box.gd" id="2_72e8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7yvd"]
 size = Vector2(40, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72e8q"]
+size = Vector2(40, 40)
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374]
 position = Vector2(149, 128)
+scale = Vector2(-1, 1)
 script = ExtResource("1_s3esy")
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D" unique_id=1291774109]
@@ -16,6 +21,7 @@ offset_left = -20.0
 offset_top = -30.0
 offset_right = 20.0
 offset_bottom = 29.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="CharacterBody2D" unique_id=1488399180]
 offset_left = -20.0
@@ -23,6 +29,30 @@ offset_top = -29.0
 offset_right = 20.0
 offset_bottom = -15.0
 color = Color(0.427493, 0.42749307, 0.42749307, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="CharacterBody2D" unique_id=599314515]
+offset_left = -20.0
+offset_top = -17.0
+offset_right = -13.0
+offset_bottom = -3.0
+color = Color(0.53884655, 0.20902741, 0.1398598, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=647942814]
 shape = SubResource("RectangleShape2D_q7yvd")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=935567722]
+position = Vector2(337, 40)
+script = ExtResource("2_72e8q")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=683643372]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1329345888]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_72e8q")
+
+[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_player_entered"]

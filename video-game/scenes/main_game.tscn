@@ -7,7 +7,7 @@
 size = Vector2(40, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72e8q"]
-size = Vector2(40, 40)
+size = Vector2(73, 70)
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
 
@@ -39,20 +39,21 @@ offset_bottom = -3.0
 color = Color(0.53884655, 0.20902741, 0.1398598, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=647942814]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1994678154]
 shape = SubResource("RectangleShape2D_q7yvd")
-disabled = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=935567722]
+[node name="Area2D" type="Area2D" parent="." unique_id=935567722 node_paths=PackedStringArray("player")]
 position = Vector2(337, 40)
 script = ExtResource("2_72e8q")
+player = NodePath("../CharacterBody2D")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=683643372]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1329345888]
-position = Vector2(20, 20)
+position = Vector2(19.5, 19)
 shape = SubResource("RectangleShape2D_72e8q")
 
-[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_player_entered"]
+[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_stock_touch"]
+[connection signal="body_exited" from="Area2D" to="CharacterBody2D" method="_on_stock_exit"]

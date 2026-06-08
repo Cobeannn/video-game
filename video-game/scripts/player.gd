@@ -1,8 +1,8 @@
 extends CharacterBody2D
-
+var interactable = false
+var pick_up = false
 
 const SPEED = 150.0
-
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -19,10 +19,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(delta):
+func _ready():
 	pass
-	
 
 
-func _on_player_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func _process(delta):
+	if Input.is_action_just_pressed("ui_interact") and interactable: 
+		pick_up = true
+
+func _on_stock_touch(body: Node2D) -> void:
+	interactable = true
+
+
+func _on_stock_exit(body: Node2D) -> void:
+	interactable = false

@@ -4,12 +4,9 @@ extends Area2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var tween = get_tree().create_tween()
 	if player.pick_up:
-		position = player.position + Vector2(40,-20)
+		tween.tween_property(self, "position", player.position + Vector2(30,0)*Input.get_axis("ui_left","ui_right"), 0.1)
 		await get_tree().create_timer(0.2).timeout
 		if Input.is_action_just_pressed("ui_interact"):
 			player.pick_up = false
-
-
-func _player_touch(area: Area2D) -> void:
-	print("AHHH")

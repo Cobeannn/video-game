@@ -12,8 +12,7 @@ size = Vector2(73, 70)
 [node name="Node2D" type="Node2D" unique_id=397669883]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374]
-position = Vector2(149, 128)
-scale = Vector2(-1, 1)
+position = Vector2(243, 78)
 script = ExtResource("1_s3esy")
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D" unique_id=1291774109]
@@ -43,16 +42,26 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("RectangleShape2D_q7yvd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=935567722 node_paths=PackedStringArray("player")]
-position = Vector2(337, 40)
+position = Vector2(443, 62)
 script = ExtResource("2_72e8q")
 player = NodePath("../CharacterBody2D")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=683643372]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(62, 54)
+color = Color(0.9764706, 0.95686275, 0.7764706, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1329345888]
-position = Vector2(19.5, 19)
 shape = SubResource("RectangleShape2D_72e8q")
 
 [connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_stock_touch"]

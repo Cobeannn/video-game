@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d2icq5x8xukoa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5u3a"]
+size = Vector2(169.5, 90.5)
+
+[node name="Shelf" type="Area2D" unique_id=1506199328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=722490885]
+position = Vector2(84.25, 44.75)
+shape = SubResource("RectangleShape2D_x5u3a")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1134680868]
+offset_right = 169.0
+offset_bottom = 40.0
+color = Color(0.47058824, 0.47058824, 0.3882353, 1)
+
+[node name="Slot 1" type="RemoteTransform2D" parent="." unique_id=254626704]
+position = Vector2(16, 16)
+
+[node name="Slot 2" type="RemoteTransform2D" parent="." unique_id=711196113]
+position = Vector2(48, 16)
+
+[node name="Slot 3" type="RemoteTransform2D" parent="." unique_id=1408417036]
+position = Vector2(80, 16)
+
+[node name="Slot 4" type="RemoteTransform2D" parent="." unique_id=1854273313]
+position = Vector2(112, 16)
+
+[node name="Slot 5" type="RemoteTransform2D" parent="." unique_id=2033903122]
+position = Vector2(144, 16)

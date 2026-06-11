@@ -1,8 +1,11 @@
 extends CharacterBody2D
 var interactable = false
 var pick_up = false
+var can_stock = false
 
 const SPEED = 150.0
+
+@export var stock: Area2D
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -33,3 +36,8 @@ func _on_stock_touch(body: Node2D) -> void:
 
 func _on_stock_exit(body: Node2D) -> void:
 	interactable = false
+
+
+func _touch_shelf(body: Node2D) -> void:
+	if pick_up:
+		can_stock = true

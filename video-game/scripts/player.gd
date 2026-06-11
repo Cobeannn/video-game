@@ -40,4 +40,9 @@ func _on_stock_exit(body: Node2D) -> void:
 
 func _touch_shelf(body: Node2D) -> void:
 	if pick_up:
+		print("Press 'E' to stock")
 		can_stock = true
+
+
+func _not_touch_shelf(body: Node2D) -> void:
+	can_stock = false

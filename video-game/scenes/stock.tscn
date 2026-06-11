@@ -1,28 +1,9 @@
-[gd_scene format=3 uid="uid://dmakkqs5fc0kn"]
+[gd_scene format=3 uid="uid://k2ojp0b1oyvh"]
 
-[ext_resource type="Script" uid="uid://dt4wmjeqnp7b1" path="res://scripts/stock_box.gd" id="1_y5bj3"]
+[ext_resource type="Script" uid="uid://bjlddfvgkuh33" path="res://scripts/stock.gd" id="1_y5bj3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_72e8q"]
-size = Vector2(73, 70)
-
-[node name="Stock" type="Area2D" unique_id=1921048739 node_paths=PackedStringArray("player")]
+[node name="ColorRect" type="ColorRect" unique_id=2010812669]
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(1, 1, 0.6745098, 1)
 script = ExtResource("1_y5bj3")
-player = NodePath("")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=36432530]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(62, 54)
-color = Color(0.9764706, 0.95686275, 0.7764706, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480843290]
-shape = SubResource("RectangleShape2D_72e8q")

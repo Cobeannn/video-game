@@ -9,7 +9,7 @@ var stock = preload("res://scenes/stock.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player.can_stock and Input.is_action_just_pressed("ui_interact"):
-		place(1)
+		shelf.place(items)
 	if items <= 0:
 		print("box empty!")
 		queue_free()
@@ -19,8 +19,3 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(0.2).timeout
 		if Input.is_action_just_pressed("ui_interact") and not player.can_stock:
 			player.pick_up = false
-
-
-func place(place_items):
-	items -= place_items
-	add_sibling(stock.instantiate())

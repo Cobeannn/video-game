@@ -10,16 +10,32 @@ size = Vector2(40, 59)
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
 
-[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") instance=ExtResource("3_0rdsr")]
+[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box", "target") instance=ExtResource("3_0rdsr")]
 position = Vector2(62, 156)
 script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
-stock_box = NodePath("../Stock")
+stock_box = NodePath("../Stock_box")
+target = NodePath("Slot 1")
+
+[node name="Slot 1" type="RemoteTransform2D" parent="Shelf" unique_id=666929795]
+position = Vector2(16, 16)
+
+[node name="Slot 2" type="RemoteTransform2D" parent="Shelf" unique_id=1850983735]
+position = Vector2(48, 16)
+
+[node name="Slot 3" type="RemoteTransform2D" parent="Shelf" unique_id=888022477]
+position = Vector2(80, 16)
+
+[node name="Slot 4" type="RemoteTransform2D" parent="Shelf" unique_id=1171233230]
+position = Vector2(112, 16)
+
+[node name="Slot 5" type="RemoteTransform2D" parent="Shelf" unique_id=562652321]
+position = Vector2(144, 16)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock")]
 position = Vector2(243, 78)
 script = ExtResource("1_s3esy")
-stock = NodePath("../Stock")
+stock = NodePath("../Stock_box")
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D" unique_id=1291774109]
 offset_left = -20.0
@@ -47,12 +63,12 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1994678154]
 shape = SubResource("RectangleShape2D_q7yvd")
 
-[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
-position = Vector2(443, 62)
+[node name="Stock_box" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
+position = Vector2(374, 52)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
 
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
-[connection signal="body_entered" from="Stock" to="CharacterBody2D" method="_on_stock_touch"]
-[connection signal="body_exited" from="Stock" to="CharacterBody2D" method="_on_stock_exit"]
+[connection signal="body_entered" from="Stock_box" to="CharacterBody2D" method="_on_stock_touch"]
+[connection signal="body_exited" from="Stock_box" to="CharacterBody2D" method="_on_stock_exit"]

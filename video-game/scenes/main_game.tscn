@@ -64,7 +64,7 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("RectangleShape2D_q7yvd")
 
 [node name="Stock_box" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
-position = Vector2(374, 52)
+position = Vector2(361, 70)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
 

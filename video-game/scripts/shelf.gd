@@ -18,3 +18,4 @@ func _process(delta: float) -> void:
 	
 func place(place_items):
 	in_stock.assign(stock_box.in_box)
+	add_child(stock.instantiate())

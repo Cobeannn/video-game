@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://14yug16ur0iu"]
 
+[ext_resource type="Script" uid="uid://c1d1f2cyaq6pd" path="res://scripts/computer_screen.gd" id="1_hd5qy"]
 [ext_resource type="FontFile" uid="uid://crbccvefektj4" path="res://fonts/CooperBits.ttf" id="1_r67kn"]
 [ext_resource type="FontFile" uid="uid://dbnf8ks7swb7c" path="res://fonts/Pix32.ttf" id="2_brbbq"]
 
@@ -23,6 +24,7 @@ offset_left = 128.0
 offset_top = 48.0
 offset_right = 1034.0
 offset_bottom = 609.0
+script = ExtResource("1_hd5qy")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1104759419]
 layout_mode = 0

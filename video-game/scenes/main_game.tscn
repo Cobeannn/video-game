@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dkdh66s1u6nx0" path="res://scripts/shelf.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://dmakkqs5fc0kn" path="res://scenes/stock_box.tscn" id="2_d2op2"]
 [ext_resource type="PackedScene" uid="uid://d2icq5x8xukoa" path="res://scenes/shelf.tscn" id="3_0rdsr"]
+[ext_resource type="Script" uid="uid://2tr8gnr0cuom" path="res://scripts/computer.gd" id="4_ygxny"]
 [ext_resource type="PackedScene" uid="uid://sfysshowwg78" path="res://scenes/computer.tscn" id="5_ygxny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7yvd"]
@@ -17,8 +18,13 @@ script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
 stock_box = NodePath("../Stock_box")
 
+[node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player") instance=ExtResource("5_ygxny")]
+position = Vector2(580, 78)
+script = ExtResource("4_ygxny")
+player = NodePath("../CharacterBody2D")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock")]
-position = Vector2(243, 78)
+position = Vector2(227, 78)
 script = ExtResource("1_s3esy")
 stock = NodePath("../Stock_box")
 
@@ -49,14 +55,14 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("RectangleShape2D_q7yvd")
 
 [node name="Stock_box" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
+z_index = -1
 position = Vector2(361, 70)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
 
-[node name="Computer" parent="." unique_id=439430676 instance=ExtResource("5_ygxny")]
-position = Vector2(580, 78)
-
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
+[connection signal="body_entered" from="Computer" to="CharacterBody2D" method="_on_computer_body_entered"]
+[connection signal="body_exited" from="Computer" to="CharacterBody2D" method="_on_computer_body_exited"]
 [connection signal="body_entered" from="Stock_box" to="CharacterBody2D" method="_on_stock_touch"]
 [connection signal="body_exited" from="Stock_box" to="CharacterBody2D" method="_on_stock_exit"]

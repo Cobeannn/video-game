@@ -49,10 +49,10 @@ func _not_touch_shelf(body: Node2D) -> void:
 	can_stock = false
 
 
-func _computer_touch(body: Node2D) -> void:
+func _on_computer_body_entered(body: Node2D) -> void:
 	print("Press 'E' to open Computer")
 	computer_interact = true
 
 
-func _not_touch_computer(body: Node2D) -> void:
+func _on_computer_body_exited(body: Node2D) -> void:
 	computer_interact = false

@@ -2,6 +2,7 @@ extends CharacterBody2D
 var interactable = false
 var pick_up = false
 var can_stock = false
+var computer_interact = false
 
 const SPEED = 150.0
 
@@ -46,3 +47,12 @@ func _touch_shelf(body: Node2D) -> void:
 
 func _not_touch_shelf(body: Node2D) -> void:
 	can_stock = false
+
+
+func _computer_touch(body: Node2D) -> void:
+	print("Press 'E' to open Computer")
+	computer_interact = true
+
+
+func _not_touch_computer(body: Node2D) -> void:
+	computer_interact = false

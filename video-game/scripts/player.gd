@@ -3,10 +3,12 @@ var interactable = false
 var pick_up = false
 var can_stock = false
 var computer_interact = false
+var direction_x = 0
 
 const SPEED = 150.0
 
 @export var stock: Area2D
+@export var sprite: Sprite2D
 
 func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -19,6 +21,17 @@ func _physics_process(delta: float) -> void:
 		velocity.y = direction_y * SPEED
 	else:
 		velocity.y = move_toward(velocity.x, 0, SPEED)
+		
+	if direction_x == -1 and sprite.flip_h == false:
+		sprite.flip_h = true
+		sprite.scale.y = sprite.scale.y/1.1
+		await get_tree().create_timer(0.1).timeout
+		sprite.scale.y = 3.6
+	if direction_x == 1 and sprite.flip_h == true:
+		sprite.flip_h = false
+		sprite.scale.y = sprite.scale.x/1.1
+		await get_tree().create_timer(0.1).timeout
+		sprite.scale.y = 3.6
 
 	move_and_slide()
 
@@ -28,15 +41,9 @@ func _ready():
 
 
 func _process(delta):
+	direction_x = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("ui_interact") and interactable: 
 		pick_up = true
-
-func _on_stock_touch(body: Node2D) -> void:
-	interactable = true
-
-
-func _on_stock_exit(body: Node2D) -> void:
-	interactable = false
 
 
 func _touch_shelf(body: Node2D) -> void:
@@ -56,3 +63,16 @@ func _on_computer_body_entered(body: Node2D) -> void:
 
 func _on_computer_body_exited(body: Node2D) -> void:
 	computer_interact = false
+
+
+func _on_stock_body_entered(body: Node2D) -> void:
+	interactable = true
+
+
+func _on_stock_body_exited(body: Node2D) -> void:
+	interactable = false
+	
+func squish(squish_amount,squish_time):
+	sprite.scale.y = sprite.scale.x/squish_amount
+	await get_tree().create_timer(squish_time).timeout
+	sprite.scale.y = 3.6

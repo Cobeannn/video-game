@@ -1,62 +1,53 @@
 [gd_scene format=3 uid="uid://du0eu2qjupty6"]
 
+[ext_resource type="Texture2D" uid="uid://fxjnejtatmuj" path="res://Images/game floor.png" id="1_70vka"]
 [ext_resource type="Script" uid="uid://bpw0u0s0vnbvw" path="res://scripts/player.gd" id="1_s3esy"]
 [ext_resource type="Script" uid="uid://dkdh66s1u6nx0" path="res://scripts/shelf.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://dmakkqs5fc0kn" path="res://scenes/stock_box.tscn" id="2_d2op2"]
 [ext_resource type="PackedScene" uid="uid://d2icq5x8xukoa" path="res://scenes/shelf.tscn" id="3_0rdsr"]
 [ext_resource type="Script" uid="uid://2tr8gnr0cuom" path="res://scripts/computer.gd" id="4_ygxny"]
 [ext_resource type="PackedScene" uid="uid://sfysshowwg78" path="res://scenes/computer.tscn" id="5_ygxny"]
+[ext_resource type="Texture2D" uid="uid://755yxp6p5p6" path="res://Images/game character.png" id="7_70vka"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7yvd"]
-size = Vector2(40, 59)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
+radius = 9.0
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=20112170]
+z_index = -2
+position = Vector2(575.99994, 323.99997)
+scale = Vector2(3.5999997, 3.6)
+texture = ExtResource("1_70vka")
 
 [node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") instance=ExtResource("3_0rdsr")]
 position = Vector2(145, 150)
 script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
-stock_box = NodePath("../Stock_box")
+stock_box = NodePath("../Stock")
 
 [node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player") instance=ExtResource("5_ygxny")]
 position = Vector2(580, 78)
 script = ExtResource("4_ygxny")
 player = NodePath("../CharacterBody2D")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite")]
 position = Vector2(227, 78)
 script = ExtResource("1_s3esy")
-stock = NodePath("../Stock_box")
+stock = NodePath("../Stock")
+sprite = NodePath("Sprite2D")
 
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D" unique_id=1291774109]
-offset_left = -20.0
-offset_top = -30.0
-offset_right = 20.0
-offset_bottom = 29.0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect2" type="ColorRect" parent="CharacterBody2D" unique_id=1488399180]
-offset_left = -20.0
-offset_top = -29.0
-offset_right = 20.0
-offset_bottom = -15.0
-color = Color(0.427493, 0.42749307, 0.42749307, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect3" type="ColorRect" parent="CharacterBody2D" unique_id=599314515]
-offset_left = -20.0
-offset_top = -17.0
-offset_right = -13.0
-offset_bottom = -3.0
-color = Color(0.53884655, 0.20902741, 0.1398598, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=166154621]
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("7_70vka")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1994678154]
-shape = SubResource("RectangleShape2D_q7yvd")
+position = Vector2(0, -15)
+scale = Vector2(3.6, 3.6)
+shape = SubResource("CapsuleShape2D_70vka")
 
-[node name="Stock_box" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
-z_index = -1
-position = Vector2(361, 70)
+[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
+position = Vector2(346, 85)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
 
@@ -64,5 +55,5 @@ shelf = NodePath("../Shelf")
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
 [connection signal="body_entered" from="Computer" to="CharacterBody2D" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer" to="CharacterBody2D" method="_on_computer_body_exited"]
-[connection signal="body_entered" from="Stock_box" to="CharacterBody2D" method="_on_stock_touch"]
-[connection signal="body_exited" from="Stock_box" to="CharacterBody2D" method="_on_stock_exit"]
+[connection signal="body_entered" from="Stock" to="CharacterBody2D" method="_on_stock_body_entered"]
+[connection signal="body_exited" from="Stock" to="CharacterBody2D" method="_on_stock_body_exited"]

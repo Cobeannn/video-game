@@ -30,10 +30,11 @@ func _process(delta: float) -> void:
 		queue_free()
 	if player.pick_up and not in_box.is_empty():
 		z_index = 0
-		move_child(self, 0)
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "position", player.position + Vector2(30,0)*Input.get_axis("ui_left","ui_right")+Vector2(0,lift), 0.1)
 		await get_tree().create_timer(0.2).timeout
 		if Input.is_action_just_pressed("ui_interact") and not player.can_stock:
+			player.squish(1.2,0.1)
+			move_toward(position.x, position.x+player.direction_x*10, 0.1)
 			player.pick_up = false
 			z_index = -1

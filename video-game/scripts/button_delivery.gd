@@ -1,16 +1,16 @@
-extends Control
+extends Button
 
-@export var computer: Area2D
-@export var player: CharacterBody2D
+var target = # get the big node
+var box = preload("res://scenes/stock_box.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass 
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		visible = false
-		player.lock_movement = false
-		
+	pass
+
+func _on_pressed() -> void:
+	add_sibling(box.instantiate())

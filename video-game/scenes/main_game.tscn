@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://2tr8gnr0cuom" path="res://scripts/computer.gd" id="4_ygxny"]
 [ext_resource type="PackedScene" uid="uid://sfysshowwg78" path="res://scenes/computer.tscn" id="5_ygxny"]
 [ext_resource type="Texture2D" uid="uid://755yxp6p5p6" path="res://Images/game character.png" id="7_70vka"]
+[ext_resource type="PackedScene" uid="uid://14yug16ur0iu" path="res://scenes/computer_screen.tscn" id="9_2l77h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
 radius = 9.0
@@ -26,10 +27,11 @@ script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
 stock_box = NodePath("../Stock")
 
-[node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player") instance=ExtResource("5_ygxny")]
+[node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player", "computer_screen") instance=ExtResource("5_ygxny")]
 position = Vector2(580, 78)
 script = ExtResource("4_ygxny")
 player = NodePath("../CharacterBody2D")
+computer_screen = NodePath("../Control")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite")]
 position = Vector2(227, 78)
@@ -50,6 +52,11 @@ shape = SubResource("CapsuleShape2D_70vka")
 position = Vector2(346, 85)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
+
+[node name="Control" parent="." unique_id=2110715046 node_paths=PackedStringArray("computer", "player") instance=ExtResource("9_2l77h")]
+visible = false
+computer = NodePath("../Computer")
+player = NodePath("../CharacterBody2D")
 
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]

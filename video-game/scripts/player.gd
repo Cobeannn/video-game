@@ -6,7 +6,7 @@ var computer_interact = false
 var direction_x = 0
 var lock_movement = false
 
-const SPEED = 150.0
+const SPEED = 200.0
 
 @export var stock: Area2D
 @export var sprite: Sprite2D
@@ -70,6 +70,7 @@ func _on_computer_body_exited(body: Node2D) -> void:
 
 
 func _on_stock_body_entered(body: Node2D) -> void:
+	print("pick me up twin")
 	interactable = true
 
 

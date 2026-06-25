@@ -34,6 +34,7 @@ offset_left = 4.0
 offset_top = -3.0
 offset_right = 906.0
 offset_bottom = 562.0
+scale = Vector2(0.88, 0.88)
 color = Color(0.18393713, 0.15454763, 0.09971935, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1220273318]
@@ -41,6 +42,7 @@ layout_mode = 0
 offset_top = 16.0
 offset_right = 907.0
 offset_bottom = 137.0
+scale = Vector2(0.87, 0.87)
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=965953787]
 layout_mode = 2
@@ -58,10 +60,11 @@ vertical_alignment = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=430518770]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 216.0
-offset_right = 457.0
-offset_bottom = 520.0
+offset_left = 24.355
+offset_top = 215.85
+offset_right = 457.355
+offset_bottom = 519.845
+scale = Vector2(0.89, 0.89)
 theme = SubResource("Theme_lpubu")
 theme_override_constants/separation = 51
 alignment = 1

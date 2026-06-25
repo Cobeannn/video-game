@@ -15,7 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_check"):
 		print(in_stock)
-	
+
+
 func place(place_items):
 	in_stock.assign(stock_box.in_box)
 	add_child(stock.instantiate())

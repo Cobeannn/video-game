@@ -14,6 +14,7 @@
 radius = 9.0
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
+scale = Vector2(1.67, 1.67)
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=20112170]
 z_index = -2
@@ -21,7 +22,7 @@ position = Vector2(575.99994, 323.99997)
 scale = Vector2(3.5999997, 3.6)
 texture = ExtResource("1_70vka")
 
-[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") instance=ExtResource("3_0rdsr")]
+[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
 position = Vector2(145, 150)
 script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
@@ -33,15 +34,17 @@ script = ExtResource("4_ygxny")
 player = NodePath("../CharacterBody2D")
 computer_screen = NodePath("../Control")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite") groups=["player"]]
 position = Vector2(227, 78)
 script = ExtResource("1_s3esy")
 stock = NodePath("../Stock")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=166154621]
+position = Vector2(0, 39.38)
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("7_70vka")
+offset = Vector2(0, -11.02)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1994678154]
 position = Vector2(0, -15)
@@ -55,6 +58,17 @@ shelf = NodePath("../Shelf")
 
 [node name="Control" parent="." unique_id=2110715046 node_paths=PackedStringArray("computer", "player") instance=ExtResource("9_2l77h")]
 visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 158.08383
+offset_top = 71.85629
+offset_right = 158.08383
+offset_bottom = 71.85629
+grow_horizontal = 2
+grow_vertical = 2
 computer = NodePath("../Computer")
 player = NodePath("../CharacterBody2D")
 

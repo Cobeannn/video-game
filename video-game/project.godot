@@ -23,6 +23,10 @@ Reference="*uid://bfnmrwnt6s52v"
 
 window/vsync/vsync_mode=0
 
+[editor]
+
+movie_writer/disable_vsync=true
+
 [input]
 
 ui_left={

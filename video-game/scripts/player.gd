@@ -6,10 +6,15 @@ var computer_interact = false
 var direction_x = 0
 var lock_movement = false
 
-const SPEED = 200.0
+const SPEED = 150.0
 
 @export var stock: Area2D
 @export var sprite: Sprite2D
+
+
+func _ready():
+	pass
+
 
 func _physics_process(delta: float) -> void:
 	if not lock_movement:
@@ -37,10 +42,6 @@ func _physics_process(delta: float) -> void:
 		
 
 		move_and_slide()
-
-
-func _ready():
-	pass
 
 
 func _process(delta):

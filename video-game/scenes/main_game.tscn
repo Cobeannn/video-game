@@ -11,16 +11,28 @@
 [ext_resource type="PackedScene" uid="uid://14yug16ur0iu" path="res://scenes/computer_screen.tscn" id="9_2l77h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
-radius = 9.0
+radius = 7.7777786
+height = 15.555557
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
-scale = Vector2(1.67, 1.67)
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=20112170]
 z_index = -2
 position = Vector2(575.99994, 323.99997)
 scale = Vector2(3.5999997, 3.6)
 texture = ExtResource("1_70vka")
+
+[node name="Shelf2" parent="." unique_id=700116400 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+position = Vector2(145, 278)
+script = ExtResource("2_0rdsr")
+player = NodePath("../CharacterBody2D")
+stock_box = NodePath("../Stock")
+
+[node name="Shelf3" parent="." unique_id=1358557988 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+position = Vector2(145, 414)
+script = ExtResource("2_0rdsr")
+player = NodePath("../CharacterBody2D")
+stock_box = NodePath("../Stock")
 
 [node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
 position = Vector2(145, 150)
@@ -47,11 +59,11 @@ texture = ExtResource("7_70vka")
 offset = Vector2(0, -11.02)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1994678154]
-position = Vector2(0, -15)
-scale = Vector2(3.6, 3.6)
+position = Vector2(0, 4)
+scale = Vector2(5.65, 3.91)
 shape = SubResource("CapsuleShape2D_70vka")
 
-[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") instance=ExtResource("2_d2op2")]
+[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") groups=["stock"] instance=ExtResource("2_d2op2")]
 position = Vector2(346, 85)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")

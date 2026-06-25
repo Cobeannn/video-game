@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://sfysshowwg78"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sc3q"]
-size = Vector2(151, 117)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sc3q"]
+radius = 41.0
+height = 82.0
 
 [node name="Area2D" type="Area2D" unique_id=439430676]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241336333]
-shape = SubResource("RectangleShape2D_7sc3q")
+position = Vector2(0, -11.12)
+scale = Vector2(1.52, 1.375)
+shape = SubResource("CapsuleShape2D_7sc3q")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=774778922]
 offset_left = -26.0

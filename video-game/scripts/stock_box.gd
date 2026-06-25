@@ -42,3 +42,8 @@ func _process(delta: float) -> void:
 				move_toward(position.x, position.x+player.direction_x*10, 0.1)
 				player.pick_up = false
 				z_index = -1
+
+
+func get_nearest_node():
+	var target = get_tree().get_first_node_in_group("player")
+	

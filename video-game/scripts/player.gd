@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(0.1).timeout
 			sprite.scale.y = 3.6
 		
-
 		move_and_slide()
 
 

@@ -5,15 +5,18 @@ var can_stock = false
 var computer_interact = false
 var direction_x = 0
 var lock_movement = false
+var shelves
 
 const SPEED = 150.0
 
 @export var stock: Area2D
 @export var sprite: Sprite2D
 
-
 func _ready():
-	pass
+	shelves = get_tree().get_nodes_in_group("shelf")
+	for shelf in shelves:
+		shelf.body_entered.connect(_touch_shelf)
+		shelf.body_exited.connect(_not_touch_shelf)
 
 
 func _physics_process(delta: float) -> void:
@@ -51,6 +54,7 @@ func _process(delta):
 
 
 func _touch_shelf(body: Node2D) -> void:
+		
 	if pick_up:
 		print("Press 'E' to stock")
 		can_stock = true
@@ -70,7 +74,6 @@ func _on_computer_body_exited(body: Node2D) -> void:
 
 
 func _on_stock_body_entered(body: Node2D) -> void:
-	print("pick me up twin")
 	interactable = true
 
 

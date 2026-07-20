@@ -21,17 +21,13 @@ func _ready():
 func _process(delta: float) -> void:
 	if player.interactable:
 		label.visible = true
-		label.pop()
 	if not player.interactable:
-		var tweener = get_tree().create_tween()
-		tweener.tween_property(label, "position", position.y+100, 1)
-		await get_tree().create_timer(0.1).timeout
-		label.visible = false
-		
+		label.visible = false	
 	if not shelf == null and not player == null:
 		if player.can_stock and Input.is_action_just_pressed("ui_interact") and not shelf.is_stocked:
 			label.visible = false
 			await get_tree().create_timer(0.05).timeout
+			
 			shelf.place(1)
 			shelf.is_stocked = true
 			in_box.clear()
@@ -55,8 +51,3 @@ func _process(delta: float) -> void:
 				move_toward(position.x, position.x+player.direction_x*10, 0.1)
 				player.pick_up = false
 				z_index = -1
-
-
-func get_nearest_node():
-	var target = get_tree().get_first_node_in_group("player")
-	

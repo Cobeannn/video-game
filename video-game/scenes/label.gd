@@ -7,10 +7,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var tweener = get_tree().create_tween()
-	tweener.tween_property(self, "position", position.y-100, 1)
+	pass
 
 
 func pop():
-	var tweener = get_tree().create_tween()
-	tweener.tween_property(self, "position", position.y-100, 1)
+	pass

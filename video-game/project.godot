@@ -21,6 +21,7 @@ Reference="*uid://bfnmrwnt6s52v"
 
 [display]
 
+window/size/initial_position_type=3
 window/vsync/vsync_mode=0
 
 [editor]

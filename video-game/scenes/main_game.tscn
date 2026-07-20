@@ -22,23 +22,20 @@ position = Vector2(575.99994, 323.99997)
 scale = Vector2(3.5999997, 3.6)
 texture = ExtResource("1_70vka")
 
-[node name="Shelf2" parent="." unique_id=700116400 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
-position = Vector2(145, 278)
-script = ExtResource("2_0rdsr")
-player = NodePath("../CharacterBody2D")
-stock_box = NodePath("../Stock")
-
-[node name="Shelf3" parent="." unique_id=1358557988 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
-position = Vector2(145, 414)
-script = ExtResource("2_0rdsr")
-player = NodePath("../CharacterBody2D")
-stock_box = NodePath("../Stock")
-
-[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player", "stock_box") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
 position = Vector2(145, 150)
 script = ExtResource("2_0rdsr")
 player = NodePath("../CharacterBody2D")
-stock_box = NodePath("../Stock")
+
+[node name="Shelf3" parent="." unique_id=1358557988 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+position = Vector2(145, 414)
+script = ExtResource("2_0rdsr")
+player = NodePath("../CharacterBody2D")
+
+[node name="Shelf2" parent="." unique_id=700116400 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+position = Vector2(145, 278)
+script = ExtResource("2_0rdsr")
+player = NodePath("../CharacterBody2D")
 
 [node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player", "computer_screen") instance=ExtResource("5_ygxny")]
 position = Vector2(580, 78)
@@ -53,7 +50,7 @@ stock = NodePath("../Stock")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=166154621]
-position = Vector2(0, 39.38)
+position = Vector2(0, 34)
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("7_70vka")
 offset = Vector2(0, -11.02)

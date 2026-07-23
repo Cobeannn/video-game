@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1d1f2cyaq6pd" path="res://scripts/computer_screen.gd" id="1_hd5qy"]
 [ext_resource type="FontFile" uid="uid://crbccvefektj4" path="res://fonts/CooperBits.ttf" id="1_r67kn"]
 [ext_resource type="FontFile" uid="uid://dbnf8ks7swb7c" path="res://fonts/Pix32.ttf" id="2_brbbq"]
-[ext_resource type="Script" uid="uid://b70umwmvjo7t6" path="res://scripts/button_delivery.gd" id="4_sdo7l"]
+[ext_resource type="Script" uid="uid://b70umwmvjo7t6" path="res://scripts/button.gd" id="4_sdo7l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
 font = ExtResource("1_r67kn")
@@ -86,7 +86,7 @@ text = "Button 3"
 
 [node name="Button4" type="Button" parent="VBoxContainer2" unique_id=80249176]
 layout_mode = 2
-text = "Button 4
-"
+toggle_mode = true
+text = "Turn off tips"
 
 [connection signal="pressed" from="VBoxContainer2/Button" to="VBoxContainer2/Button" method="_on_pressed"]

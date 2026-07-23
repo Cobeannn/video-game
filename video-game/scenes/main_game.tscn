@@ -9,10 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://sfysshowwg78" path="res://scenes/computer.tscn" id="5_ygxny"]
 [ext_resource type="Texture2D" uid="uid://755yxp6p5p6" path="res://Images/game character.png" id="7_70vka"]
 [ext_resource type="PackedScene" uid="uid://14yug16ur0iu" path="res://scenes/computer_screen.tscn" id="9_2l77h"]
+[ext_resource type="FontFile" uid="uid://dbnf8ks7swb7c" path="res://fonts/Pix32.ttf" id="10_5cypo"]
+[ext_resource type="Script" uid="uid://dqewgaktn5h8p" path="res://scripts/label.gd" id="11_o6v7o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
 radius = 7.7777786
 height = 15.555557
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjob3"]
+line_spacing = 3.095
+font = ExtResource("10_5cypo")
+font_size = 43
 
 [node name="Node2D" type="Node2D" unique_id=397669883]
 
@@ -43,11 +50,12 @@ script = ExtResource("4_ygxny")
 player = NodePath("../CharacterBody2D")
 computer_screen = NodePath("../Control")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite") groups=["player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite", "label") groups=["player"]]
 position = Vector2(227, 78)
 script = ExtResource("1_s3esy")
 stock = NodePath("../Stock")
 sprite = NodePath("Sprite2D")
+label = NodePath("../Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=166154621]
 position = Vector2(0, 34)
@@ -60,10 +68,11 @@ position = Vector2(0, 4)
 scale = Vector2(5.65, 3.91)
 shape = SubResource("CapsuleShape2D_70vka")
 
-[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf") groups=["stock"] instance=ExtResource("2_d2op2")]
+[node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf", "label") groups=["stock"] instance=ExtResource("2_d2op2")]
 position = Vector2(346, 85)
 player = NodePath("../CharacterBody2D")
 shelf = NodePath("../Shelf")
+label = NodePath("../Label")
 
 [node name="Control" parent="." unique_id=2110715046 node_paths=PackedStringArray("computer", "player") instance=ExtResource("9_2l77h")]
 visible = false
@@ -80,6 +89,15 @@ grow_horizontal = 2
 grow_vertical = 2
 computer = NodePath("../Computer")
 player = NodePath("../CharacterBody2D")
+
+[node name="Label" type="Label" parent="." unique_id=1304522382 groups=["label"]]
+offset_left = 24.0
+offset_top = 580.0
+offset_right = 416.0
+offset_bottom = 625.0
+text = "press e to interact"
+label_settings = SubResource("LabelSettings_wjob3")
+script = ExtResource("11_o6v7o")
 
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]

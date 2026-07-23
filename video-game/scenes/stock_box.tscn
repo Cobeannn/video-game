@@ -2,20 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dt4wmjeqnp7b1" path="res://scripts/stock_box.gd" id="1_y5bj3"]
 [ext_resource type="Texture2D" uid="uid://cf3q8ifkjho61" path="res://Images/box.png" id="2_qgcqj"]
-[ext_resource type="FontFile" uid="uid://dbnf8ks7swb7c" path="res://fonts/Pix32.ttf" id="3_5quhh"]
-[ext_resource type="Script" uid="uid://dqewgaktn5h8p" path="res://scenes/label.gd" id="4_x1bao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5quhh"]
 radius = 66.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_x1bao"]
-line_spacing = 3.095
-font = ExtResource("3_5quhh")
-font_size = 28
-
 [node name="Stock" type="Area2D" unique_id=1921048739 node_paths=PackedStringArray("label")]
 script = ExtResource("1_y5bj3")
-label = NodePath("Label")
+label = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480843290]
 shape = SubResource("CircleShape2D_5quhh")
@@ -24,12 +17,3 @@ shape = SubResource("CircleShape2D_5quhh")
 position = Vector2(-182, 39.000004)
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("2_qgcqj")
-
-[node name="Label" type="Label" parent="." unique_id=394807088]
-offset_left = -6.0
-offset_top = -67.0
-offset_right = 8.0
-offset_bottom = -38.0
-text = "e"
-label_settings = SubResource("LabelSettings_x1bao")
-script = ExtResource("4_x1bao")

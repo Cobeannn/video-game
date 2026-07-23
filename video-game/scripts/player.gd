@@ -11,12 +11,14 @@ const SPEED = 150.0
 
 @export var stock: Area2D
 @export var sprite: Sprite2D
+@export var label: Label
 
 func _ready():
 	shelves = get_tree().get_nodes_in_group("shelf")
-	for shelf in shelves:
-		shelf.body_entered.connect(_touch_shelf)
-		shelf.body_exited.connect(_not_touch_shelf)
+	if not is_connected("child_entered_tree", _touch_shelf) and not is_connected("child_exiting_tree", _not_touch_shelf):
+		for shelf in shelves:
+			shelf.body_entered.connect(_touch_shelf)
+			shelf.body_exited.connect(_not_touch_shelf)
 
 
 func _physics_process(delta: float) -> void:
@@ -54,9 +56,7 @@ func _process(delta):
 
 
 func _touch_shelf(body: Node2D) -> void:
-		
 	if pick_up:
-		print("Press 'E' to stock")
 		can_stock = true
 
 

@@ -12,6 +12,7 @@ const SPEED = 150.0
 @export var stock: Area2D
 @export var sprite: Sprite2D
 @export var label: Label
+@export var door: Area2D
 
 func _ready():
 	shelves = get_tree().get_nodes_in_group("shelf")
@@ -53,6 +54,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_interact") and interactable: 
 		squish(1.1,0.1)
 		pick_up = true
+	if Input.is_action_just_pressed("ui_check"):
+		print()
 
 
 func _touch_shelf(body: Node2D) -> void:
@@ -79,8 +82,15 @@ func _on_stock_body_entered(body: Node2D) -> void:
 
 func _on_stock_body_exited(body: Node2D) -> void:
 	interactable = false
-	
+
+
 func squish(squish_amount,squish_time):
 	sprite.scale.y = sprite.scale.x/squish_amount
 	await get_tree().create_timer(squish_time).timeout
 	sprite.scale.y = 3.6
+	
+func colliding_with():
+	for collider in get_slide_collision_count():
+		var collision = get_slide_collision(collider)
+		var colliding_node = collision.get_collider()
+		print("Currently Colliding with: " + colliding_node)

@@ -17,12 +17,17 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
+	var clock = get_tree().get_first_node_in_group("scenetransition")
 	var new_box = box.instantiate()
 	new_box.add_to_group("stock")
+	
 	new_box.in_box = {
 	"things" : 10,
 	"dodads": 5
 	}
+	
+	await get_tree().create_timer((24 - clock.time)*clock.time_speed+6).timeout
+	
 	target.add_sibling(new_box)
 	new_box.body_entered.connect(player._on_stock_body_entered)
-	new_box.body_exited.connect(player._on_stock_body_exited)	
+	new_box.body_exited.connect(player._on_stock_body_exited)

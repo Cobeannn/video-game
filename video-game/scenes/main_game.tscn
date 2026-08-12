@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://14yug16ur0iu" path="res://scenes/computer_screen.tscn" id="9_2l77h"]
 [ext_resource type="FontFile" uid="uid://dbnf8ks7swb7c" path="res://fonts/Pix32.ttf" id="10_5cypo"]
 [ext_resource type="Script" uid="uid://dqewgaktn5h8p" path="res://scripts/label.gd" id="11_o6v7o"]
+[ext_resource type="Script" uid="uid://llov54d742sl" path="res://scripts/scenetransition.gd" id="12_o6v7o"]
+[ext_resource type="Script" uid="uid://cclaqk48lcru8" path="res://scripts/clock.gd" id="13_wjob3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
 radius = 7.7777786
@@ -21,7 +23,13 @@ line_spacing = 3.095
 font = ExtResource("10_5cypo")
 font_size = 43
 
+[sub_resource type="LabelSettings" id="LabelSettings_o6v7o"]
+font = ExtResource("10_5cypo")
+font_size = 131
+font_color = Color(1, 0.858275, 0.7809333, 1)
+
 [node name="Node2D" type="Node2D" unique_id=397669883]
+skew = 0.08726646
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=20112170]
 z_index = -2
@@ -29,20 +37,20 @@ position = Vector2(575.99994, 323.99997)
 scale = Vector2(3.5999997, 3.6)
 texture = ExtResource("1_70vka")
 
-[node name="Shelf" parent="." unique_id=1506199328 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Shelf" parent="." unique_id=1506199328 groups=["shelf"] instance=ExtResource("3_0rdsr")]
+z_index = -2
 position = Vector2(145, 150)
 script = ExtResource("2_0rdsr")
-player = NodePath("../CharacterBody2D")
 
-[node name="Shelf3" parent="." unique_id=1358557988 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Shelf3" parent="." unique_id=1358557988 groups=["shelf"] instance=ExtResource("3_0rdsr")]
+z_index = -2
 position = Vector2(145, 414)
 script = ExtResource("2_0rdsr")
-player = NodePath("../CharacterBody2D")
 
-[node name="Shelf2" parent="." unique_id=700116400 node_paths=PackedStringArray("player") groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Shelf2" parent="." unique_id=700116400 groups=["shelf"] instance=ExtResource("3_0rdsr")]
+z_index = -2
 position = Vector2(145, 278)
 script = ExtResource("2_0rdsr")
-player = NodePath("../CharacterBody2D")
 
 [node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player", "computer_screen") instance=ExtResource("5_ygxny")]
 position = Vector2(580, 78)
@@ -98,6 +106,35 @@ offset_bottom = 625.0
 text = "press e to interact"
 label_settings = SubResource("LabelSettings_wjob3")
 script = ExtResource("11_o6v7o")
+
+[node name="Clock" type="Label" parent="." unique_id=1075285487 groups=["scenetransition"]]
+offset_right = 43.0
+offset_bottom = 23.0
+text = "Time:"
+script = ExtResource("13_wjob3")
+
+[node name="SceneTransition" type="ColorRect" parent="." unique_id=139691843 node_paths=PackedStringArray("label", "clock")]
+visible = false
+z_index = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("12_o6v7o")
+label = NodePath("Label")
+clock = NodePath("../Clock")
+
+[node name="Label" type="Label" parent="SceneTransition" unique_id=1445217777]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 232.0
+offset_right = 761.0
+offset_bottom = 364.0
+text = "DAY 1"
+label_settings = SubResource("LabelSettings_o6v7o")
+horizontal_alignment = 1
+
+[node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135]
+position = Vector2(834, 598)
 
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]

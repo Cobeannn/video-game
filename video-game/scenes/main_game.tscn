@@ -143,10 +143,6 @@ scene = NodePath("..")
 [node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135]
 position = Vector2(834, 598)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1705235175]
-position = Vector2(592, 336)
-zoom = Vector2(0.35, 0.35)
-
 [connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
 [connection signal="body_entered" from="Computer" to="CharacterBody2D" method="_on_computer_body_entered"]

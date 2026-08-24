@@ -5,6 +5,7 @@ var day = 1
 
 @export var label: Label
 @export var clock: Label
+@export var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if clock.transition:
 		clock.transition = false
+		player.lock_movement = true
 		await get_tree().create_timer(2).timeout
 		visible = true
 		modulate.a = 0.0
@@ -24,5 +26,6 @@ func _process(delta: float) -> void:
 		label.text = "DAY " + str(day+1)
 		day += 1
 		await get_tree().create_timer(2).timeout
+		player.lock_movement = false
 		var tween2 = get_tree().create_tween()
 		tween2.tween_property(self, "modulate:a", 0.0, 0.5)

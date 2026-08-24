@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bojlt1bnnxnqb"]
+
+[ext_resource type="Script" uid="uid://cmba3vtidipmn" path="res://scripts/customer.gd" id="1_xss0h"]
+[ext_resource type="Texture2D" uid="uid://755yxp6p5p6" path="res://Images/game character.png" id="2_8qg4y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
+radius = 7.7777786
+height = 15.555557
+
+[node name="Customer" type="Area2D" unique_id=126546720 groups=["customer"]]
+rotation = 1.5707964
+script = ExtResource("1_xss0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2057452655 groups=["sprite"]]
+self_modulate = Color(0, 0.5473344, 0.25654387, 1)
+position = Vector2(0, 28.000015)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_8qg4y")
+offset = Vector2(0, -11.02)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075618018]
+position = Vector2(6.1035156e-05, -3)
+scale = Vector2(5.65, 3.91)
+shape = SubResource("CapsuleShape2D_70vka")

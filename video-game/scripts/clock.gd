@@ -1,15 +1,16 @@
 extends Label
 
-var time = 6
+var time = 6.0
 var transition = false
 var time_takeaway = 0
 var repeats = 2
 var am_pm = " AM"
-var time_speed = 1
+var time_speed = 5
+var rush_hour = 17.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Time: " + str(time - time_takeaway) + am_pm
+	text = "Time: " + str(int(time) - time_takeaway) + am_pm
 	for i in range(9999999999):
 		await get_tree().create_timer(time_speed).timeout
 		time += 1

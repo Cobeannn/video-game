@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://llov54d742sl" path="res://scripts/scenetransition.gd" id="12_o6v7o"]
 [ext_resource type="Script" uid="uid://cclaqk48lcru8" path="res://scripts/clock.gd" id="13_wjob3"]
 [ext_resource type="Script" uid="uid://bnbcpjxgvbpwm" path="res://scripts/customer_spawner.gd" id="14_sp04v"]
+[ext_resource type="PackedScene" uid="uid://q5abulu3vge6" path="res://scenes/closed shelf.tscn" id="15_sp04v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
 radius = 7.7777786
@@ -37,19 +38,15 @@ position = Vector2(575.99994, 323.99997)
 scale = Vector2(3.5999997, 3.6)
 texture = ExtResource("1_70vka")
 
-[node name="Shelf" parent="." unique_id=1506199328 groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Open Shelf" parent="." unique_id=1506199328 groups=["shelf"] instance=ExtResource("3_0rdsr")]
 z_index = -2
-position = Vector2(145, 150)
+position = Vector2(216, 85)
 script = ExtResource("2_0rdsr")
 
-[node name="Shelf3" parent="." unique_id=1358557988 groups=["shelf"] instance=ExtResource("3_0rdsr")]
+[node name="Open Shelf2" parent="." unique_id=2131454342 groups=["shelf"] instance=ExtResource("3_0rdsr")]
 z_index = -2
-position = Vector2(145, 414)
-script = ExtResource("2_0rdsr")
-
-[node name="Shelf2" parent="." unique_id=700116400 groups=["shelf"] instance=ExtResource("3_0rdsr")]
-z_index = -2
-position = Vector2(145, 278)
+position = Vector2(216, 552)
+rotation = 3.1415927
 script = ExtResource("2_0rdsr")
 
 [node name="Computer" parent="." unique_id=439430676 node_paths=PackedStringArray("player", "computer_screen") instance=ExtResource("5_ygxny")]
@@ -59,7 +56,7 @@ player = NodePath("../CharacterBody2D")
 computer_screen = NodePath("../Control")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1876019374 node_paths=PackedStringArray("stock", "sprite", "label") groups=["player"]]
-position = Vector2(227, 78)
+position = Vector2(827, 598)
 script = ExtResource("1_s3esy")
 stock = NodePath("../Stock")
 sprite = NodePath("Sprite2D")
@@ -79,7 +76,7 @@ shape = SubResource("CapsuleShape2D_70vka")
 [node name="Stock" parent="." unique_id=1921048739 node_paths=PackedStringArray("player", "shelf", "label") groups=["stock"] instance=ExtResource("2_d2op2")]
 position = Vector2(346, 85)
 player = NodePath("../CharacterBody2D")
-shelf = NodePath("../Shelf")
+shelf = NodePath("../Open Shelf")
 label = NodePath("../Label")
 
 [node name="Control" parent="." unique_id=2110715046 node_paths=PackedStringArray("computer", "player") instance=ExtResource("9_2l77h")]
@@ -140,11 +137,21 @@ script = ExtResource("14_sp04v")
 clock = NodePath("../Clock")
 scene = NodePath("..")
 
-[node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135]
+[node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135 groups=["stock_spawner"]]
 position = Vector2(834, 598)
 
-[connection signal="body_entered" from="Shelf" to="CharacterBody2D" method="_touch_shelf"]
-[connection signal="body_exited" from="Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
+[node name="Closed Shelf" parent="." unique_id=622280497 groups=["shelf"] instance=ExtResource("15_sp04v")]
+position = Vector2(32, 224)
+rotation = -1.5707964
+script = ExtResource("2_0rdsr")
+
+[node name="Closed Shelf2" parent="." unique_id=2007426324 groups=["shelf"] instance=ExtResource("15_sp04v")]
+position = Vector2(32, 416)
+rotation = -1.5707964
+script = ExtResource("2_0rdsr")
+
+[connection signal="body_entered" from="Open Shelf" to="CharacterBody2D" method="_touch_shelf"]
+[connection signal="body_exited" from="Open Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
 [connection signal="body_entered" from="Computer" to="CharacterBody2D" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer" to="CharacterBody2D" method="_on_computer_body_exited"]
 [connection signal="body_entered" from="Stock" to="CharacterBody2D" method="_on_stock_body_entered"]

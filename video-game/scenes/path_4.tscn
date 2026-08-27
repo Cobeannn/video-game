@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cb80msjoqgu3b"]
+[gd_scene format=3 uid="uid://bk7hv7oovhu6k"]
 
-[ext_resource type="Script" uid="uid://bsom4bsrcw3o3" path="res://scripts/path_follow.gd" id="1_vhh1m"]
+[ext_resource type="Script" uid="uid://bsom4bsrcw3o3" path="res://scripts/path_follow.gd" id="1_hmpnf"]
 
 [sub_resource type="Curve2D" id="Curve2D_vnsdt"]
 _data = {
@@ -16,4 +16,4 @@ position = Vector2(824, 944)
 rotation = -1.5707964
 rotates = false
 loop = false
-script = ExtResource("1_vhh1m")
+script = ExtResource("1_hmpnf")

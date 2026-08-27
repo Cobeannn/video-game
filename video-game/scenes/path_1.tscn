@@ -4,15 +4,15 @@
 
 [sub_resource type="Curve2D" id="Curve2D_vnsdt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 824, 904, 0, 0, 0, 0, 824, 376, 0, 0, 0, 0, 448, 376, 0, 0, 0, 0, 448, 464, 0, 0, 0, 0, 144, 464)
+"points": PackedVector2Array(0, 0, 0, 0, 824, 944, 0, 0, 0, 0, 824, 376, 0, 0, 0, 0, 448, 376, 0, 0, 0, 0, 448, 224, 0, 0, 0, 0, 96, 224)
 }
 point_count = 5
 
-[node name="Path 1" type="Path2D" unique_id=232481626 groups=["path"]]
+[node name="Path 2" type="Path2D" unique_id=2012091590 groups=["path"]]
 curve = SubResource("Curve2D_vnsdt")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=2065389011]
-position = Vector2(824, 904)
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=2027900215]
+position = Vector2(824, 944)
 rotation = -1.5707964
 rotates = false
 loop = false

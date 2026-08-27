@@ -14,20 +14,22 @@ func _ready() -> void:
 	in_stock = {}
 	player = get_tree().get_first_node_in_group("player")
 	stock_box = get_tree().get_first_node_in_group("stock")
+	add_to_group("shelf")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if get_overlapping_bodies():
 		touching_shelf = self
+	elif not get_overlapping_bodies():
+		touching_shelf = null
 	if Input.is_action_just_pressed("ui_check"):
-		print(touching_shelf)
+		print(is_stocked)
 
 
 func place(place_items):
-	in_stock.assign(stock_box.in_box)
-	add_child(stock.instantiate())
-
-
-func find_nearest_shelf():
-	pass
+	var shelves = get_tree().get_nodes_in_group("shelf")
+	for shelf in shelves:
+		if not shelf.touching_shelf == null:
+			shelf.touching_shelf.add_child(stock.instantiate())
+			shelf.is_stocked =  true

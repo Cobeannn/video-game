@@ -4,13 +4,14 @@ var box = preload("res://scenes/stock_box.tscn")
 var target 
 var player
 var turn_off_tips = false
+var stock_spawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	stock_spawn = get_tree().get_first_node_in_group("stock_spawner")
 	
-	var start_target = get_parent()
-	target = start_target.get_parent()
+	target = stock_spawn
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,8 +27,8 @@ func _on_pressed() -> void:
 	"dodads": 5
 	}
 	
-	await get_tree().create_timer((24 - clock.time)*clock.time_speed+6).timeout
+	await get_tree().create_timer(5).timeout
 	
-	target.add_sibling(new_box)
+	target.add_child(new_box)
 	new_box.body_entered.connect(player._on_stock_body_entered)
 	new_box.body_exited.connect(player._on_stock_body_exited)

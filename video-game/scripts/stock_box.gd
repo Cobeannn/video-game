@@ -28,6 +28,9 @@ func _ready(): # Define variables
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var stocks = get_tree().get_nodes_in_group("stock")
+	for stock in stocks:
+		if stock.has_overlapping_bodies():
+			nearest_stock = stock
 	var shelves = get_tree().get_nodes_in_group("shelf")
 	if get_overlapping_bodies():
 		if player.interactable and not player.can_stock and not player.pick_up: # Interact label
@@ -48,7 +51,7 @@ func _process(delta: float) -> void:
 							shelf.place(1)
 							in_box.clear()
 			if player.can_stock and not in_box.is_empty(): # Lift box when near shelf 
-				nearest_stock.lift = -10
+				lift = -10
 			else:
 				lift = 0
 				
@@ -56,10 +59,12 @@ func _process(delta: float) -> void:
 				var tween = get_tree().create_tween()
 				tween.tween_property(nearest_stock, "position", player.position + Vector2(30,0)*Input.get_axis("ui_left","ui_right")+Vector2(0,0), 0.1)
 				await get_tree().create_timer(0.05).timeout
+				player.pick_up = false
+				player.can_stock = false
 				queue_free()
 				
 			if player.pick_up and not in_box.is_empty(): # Player pick up box 
-				z_index = 0
+				nearest_stock.z_index = 0
 				var tween = get_tree().create_tween()
 				tween.tween_property(nearest_stock, "position", player.position + Vector2(30,0)*Input.get_axis("ui_left","ui_right")+Vector2(0,lift), 0.1)
 				if not player.can_stock:
@@ -67,11 +72,9 @@ func _process(delta: float) -> void:
 				await get_tree().create_timer(0.2).timeout
 				if Input.is_action_just_pressed("ui_interact") and not player.can_stock:
 					player.squish(1.2,0.1)
-					move_toward(nearest_stock.position.x, nearest_stock.position.x+player.direction_x*10, 0.1)
+					move_toward(nearest_stock.position.x, nearest_stock.position.x + player.direction_x*10, 0.1)
 					player.pick_up = false
 					nearest_stock.z_index = -1
 			if player.pick_up and player.can_stock:
 				label.text = "press e to stock"
 				label.fade(1.0, .5)
-				await get_tree().create_timer(2).timeout
-				label.fade(0.0, .5)

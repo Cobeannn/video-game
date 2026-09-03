@@ -138,7 +138,13 @@ clock = NodePath("../Clock")
 scene = NodePath("..")
 
 [node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135 groups=["stock_spawner"]]
-position = Vector2(834, 598)
+position = Vector2(824, 600)
+
+[node name="Countdown" type="Label" parent="StockSpawnPoint" unique_id=116945989]
+offset_top = -104.0
+offset_right = 40.0
+offset_bottom = -81.0
+text = " x"
 
 [node name="Closed Shelf" parent="." unique_id=622280497 groups=["shelf"] instance=ExtResource("15_sp04v")]
 position = Vector2(32, 224)

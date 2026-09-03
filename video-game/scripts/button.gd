@@ -29,6 +29,8 @@ func _on_pressed() -> void:
 	
 	await get_tree().create_timer(5).timeout
 	
-	target.add_child(new_box)
+	
+	new_box.global_position = target.global_position
+	target.add_sibling(new_box)
 	new_box.body_entered.connect(player._on_stock_body_entered)
 	new_box.body_exited.connect(player._on_stock_body_exited)

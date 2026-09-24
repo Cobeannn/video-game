@@ -31,6 +31,7 @@ func _ready() -> void:
 			var new_path = path.instantiate()
 			scene.add_child(new_path)
 			path_follow = new_path.get_child(0)
+			
 			path_follow.add_child(customer.instantiate())
 
 

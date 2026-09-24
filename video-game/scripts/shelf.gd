@@ -21,8 +21,8 @@ func _ready() -> void:
 	stock_box = get_tree().get_first_node_in_group("stock")
 	customer = get_tree().get_nodes_in_group("customer")
 	add_to_group("shelf")
-	timers =  get_tree().get_nodes_in_group("timer")
-	timer = timers[1]
+	timer =  get_tree().get_nodes_in_group("timer")
+	timer =  timer[1]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,9 +38,10 @@ func _process(delta: float) -> void:
 				timer.start()
 				await timer.timeout
 				remove_from_group("closed")
-				await get_tree().create_timer(2).timeout
-				print(is_in_group("closed"))
+				print("open!")
+				await get_tree().create_timer(5).timeout
 				add_to_group("closed")
+				print("closed!")
 			elif Input.is_action_just_released("ui_interact"):
 				print("this is no longer a pressing matter")
 				timer.stop()

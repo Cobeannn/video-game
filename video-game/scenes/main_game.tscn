@@ -15,7 +15,11 @@
 [ext_resource type="Script" uid="uid://cclaqk48lcru8" path="res://scripts/clock.gd" id="13_wjob3"]
 [ext_resource type="Script" uid="uid://bnbcpjxgvbpwm" path="res://scripts/customer_spawner.gd" id="14_sp04v"]
 [ext_resource type="PackedScene" uid="uid://q5abulu3vge6" path="res://scenes/closed shelf.tscn" id="15_sp04v"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://hmxbl3hp31qi" path="res://scripts/money_counter.gd" id="16_ihbck"]
+[ext_resource type="PackedScene" uid="uid://gom8886n7vrx" path="res://scenes/loading icon.tscn" id="17_vnsdt"]
+=======
+>>>>>>> parent of 22a97d2 (Customer purchase)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70vka"]
 radius = 7.7777786
@@ -141,37 +145,23 @@ scene = NodePath("..")
 [node name="StockSpawnPoint" type="Marker2D" parent="." unique_id=59303135 groups=["stock_spawner"]]
 position = Vector2(824, 600)
 
-[node name="Countdown" type="Label" parent="StockSpawnPoint" unique_id=116945989 groups=["countdown"]]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -24.0
-offset_right = 11.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("10_5cypo")
-theme_override_font_sizes/font_size = 15
-text = "x"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Countdown" type="Label" parent="StockSpawnPoint" unique_id=116945989]
+offset_top = -104.0
+offset_right = 40.0
+offset_bottom = -81.0
+text = " x"
 
-[node name="Timer" type="Timer" parent="StockSpawnPoint" unique_id=1531677444 groups=["timer"]]
-
-[node name="Closed Shelf" parent="." unique_id=622280497 groups=["closed", "shelf"] instance=ExtResource("15_sp04v")]
+[node name="Closed Shelf" parent="." unique_id=622280497 groups=["shelf"] instance=ExtResource("15_sp04v")]
 position = Vector2(32, 224)
 rotation = -1.5707964
 script = ExtResource("2_0rdsr")
 
-[node name="Closed Shelf2" parent="." unique_id=2007426324 groups=["closed", "shelf"] instance=ExtResource("15_sp04v")]
+[node name="Closed Shelf2" parent="." unique_id=2007426324 groups=["shelf"] instance=ExtResource("15_sp04v")]
 position = Vector2(32, 416)
 rotation = -1.5707964
 script = ExtResource("2_0rdsr")
 
+<<<<<<< HEAD
 [node name="Money Counter" type="Label" parent="." unique_id=752316692 groups=["money_counter"]]
 offset_left = 984.0
 offset_right = 1046.0
@@ -182,6 +172,10 @@ script = ExtResource("16_ihbck")
 [node name="Timer" type="Timer" parent="." unique_id=1265269334 groups=["timer"]]
 wait_time = 3.0
 
+[node name="Path2D" parent="." unique_id=201092687 instance=ExtResource("17_vnsdt")]
+
+=======
+>>>>>>> parent of 22a97d2 (Customer purchase)
 [connection signal="body_entered" from="Open Shelf" to="CharacterBody2D" method="_touch_shelf"]
 [connection signal="body_exited" from="Open Shelf" to="CharacterBody2D" method="_not_touch_shelf"]
 [connection signal="body_entered" from="Computer" to="CharacterBody2D" method="_on_computer_body_entered"]

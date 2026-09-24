@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://k2ojp0b1oyvh"]
 
+[ext_resource type="Script" uid="uid://bjlddfvgkuh33" path="res://scripts/stock.gd" id="1_p7rtt"]
 [ext_resource type="Texture2D" uid="uid://6d1e6a071u5u" path="res://Images/stock.png" id="1_y5bj3"]
 
-[node name="Sprite2D" type="Sprite2D" unique_id=44701702]
+[node name="Node2D" type="Node2D" unique_id=1774376732]
+script = ExtResource("1_p7rtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=44701702]
 position = Vector2(-381, 124.00001)
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("1_y5bj3")

@@ -28,7 +28,7 @@ func _ready(): # Define variables
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var stocks = get_tree().get_nodes_in_group("stock")
-	for stock in stocks:
+	for stock in stocks: # Check if the stock is being touched 
 		if stock.has_overlapping_bodies():
 			nearest_stock = stock
 	var shelves = get_tree().get_nodes_in_group("shelf")
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		if not shelf == null and not player == null:
 			if player.can_stock and Input.is_action_just_pressed("ui_interact"): # If the player tries to stock shelf
 				for shelf in shelves:
-					if shelf.get_overlapping_bodies(): 
+					if shelf.get_overlapping_bodies(): # Check if the shelf is being touched
 						if shelf.is_stocked: # If the touching shelf is stocked
 							print("this shelf is stocked already!")
 						elif not shelf.is_stocked: # if the touching shelf ISN'T stocked
